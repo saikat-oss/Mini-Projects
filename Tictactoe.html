@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #353535;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+        }
+
+        .main {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            width: 25vw;
+            height: 50vh;
+            margin: auto;
+            margin-top: 20vh;
+        }
+
+        .divs {
+            border: 3px solid rgb(97, 255, 242);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            transition: all 0.2s;
+            color: rgb(255, 255, 255);
+            font-size: 100px;
+        }
+
+        .divs:hover {
+            box-shadow: 0 0 30px rgb(97, 255, 242) inset;
+            cursor: pointer;
+        }
+
+        .divs:active {
+            background-color: rgb(97, 255, 242);
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(90, 90, 90);
+            height: 100px;
+            width: 200px;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 30px;
+            padding: 20px;
+            border: 2px solid #353535;
+            z-index: 1000;
+        }
+
+        .popup button {
+            background-color: rgb(97, 255, 242);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="divs"></div>
+        <div class="divs"></div>
+        <div class="divs"></div>
+        <div class="divs"></div>
+        <div class="divs"></div>
+        <div class="divs"></div>
+        <div class="divs"></div>
+        <div class="divs"></div>
+        <div class="divs"></div>
+    </div>
+    <div class="overlay"></div>
+    <div class="popup">
+        <p id="winner" style="color: white;"></p>
+        <button onclick="replay()">Replay</button>
+    </div>
+    <script>
+        let divs = document.querySelectorAll('.divs');
+        let count = 0;
+        let gameActive = true;
+        const winningConditions = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        divs.forEach((div, index) => {
+            div.addEventListener('click', () => {
+                if (div.innerHTML == '' && gameActive) {
+                    div.innerHTML = count % 2 == 0 ? 'X' : 'O';
+                    count++;
+                    checkWinner();
+                }
+            });
+        });
+
+        function checkWinner() {
+            let board = Array.from(divs).map(div => div.innerHTML);
+            for (let condition of winningConditions) {
+                let [a, b, c] = condition;
+                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                    gameActive = false;
+                    showPopup(board[a] + ' wins');
+                    return;
+                }
+            }
+            if (count === 9) {
+                showPopup('Draw');
+            }
+        }
+
+        function showPopup(message) {
+            document.getElementById('winner').innerText = message;
+            document.querySelector('.overlay').style.display = 'block';
+            document.querySelector('.popup').style.display = 'block';
+        }
+
+        function replay() {
+            divs.forEach(div => div.innerHTML = '');
+            count = 0;
+            gameActive = true;
+            document.querySelector('.overlay').style.display = 'none';
+            document.querySelector('.popup').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

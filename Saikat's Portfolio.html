@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            background-color: #070722;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 70px;
+            background-color: rgb(12, 13, 75);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 22px;
+            font-size: 22px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            transition-duration: 0.3s;
+            transition-property: all;
+        }
+
+        nav ul li a:hover {
+            color: rgb(226, 10, 161);
+            font-size: 1.3rem;
+        }
+
+        .left {
+            font-size: 1.75rem;
+        }
+
+        .sec1 {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 80px 0;
+        }
+
+        .sec1>div {
+            width: 30%;
+        }
+
+        .divleft {
+            font-size: 3rem;
+        }
+
+        .divright img {
+            width: 100%;
+            margin: 50px 0;
+        }
+
+        #spn {
+            animation-name: anim;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            animation-duration: 12s;
+        }
+
+        @keyframes anim {
+            0% {
+                color: #fff;
+            }
+
+            20% {
+                color: rgb(144, 255, 134);
+            }
+
+            40% {
+                color: rgb(101, 98, 255);
+            }
+
+            60% {
+                color: rgb(251, 127, 255);
+            }
+
+            80% {
+                color: rgb(255, 117, 124);
+            }
+
+            100% {
+                color: #fff;
+            }
+        }
+
+        .secondSection {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .secondSection h1 {
+            font-size: 1.75rem;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .experience-columns {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .experience-column {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            flex: 1 1 340px;
+            min-width: 340px;
+            max-width: 420px;
+            /* Add this to make all cards in a column the same height */
+            align-items: stretch;
+        }
+
+        .cards {
+            background: linear-gradient(120deg, #1a1a2e 60%, #23272f 100%);
+            padding: 32px 28px 36px 28px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 225, 255, 0.10), 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1.5px solid #00e1ff;
+            color: #fff;
+            transition: box-shadow 0.3s cubic-bezier(.4, 2, .3, 1),
+                border-color 0.3s cubic-bezier(.4, 2, .3, 1),
+                background 0.3s cubic-bezier(.4, 2, .3, 1),
+                transform 0.3s cubic-bezier(.4, 2, .3, 1);
+            position: relative;
+            overflow: hidden;
+            /* Add this for equal height cards */
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cards:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 16px 48px rgba(0, 225, 255, 0.18), 0 4px 16px rgba(0, 0, 0, 0.12);
+            border-color: #00e1ffb0;
+            background: linear-gradient(120deg, #00e6a921 40%, #23272f 100%);
+        }
+
+        .cards h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            color: #00e1ff;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 12px rgba(0, 225, 255, 0.08);
+        }
+
+        .cards p {
+            font-size: 1.08rem;
+            color: #e0f7f4;
+            line-height: 1.6;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 900px) {
+            .experience-columns {
+                flex-direction: column;
+                align-items: center;
+                gap: 32px;
+            }
+
+            .experience-column {
+                max-width: 100%;
+            }
+        }
+
+        .out {
+            position: absolute;
+            top: 1140px;
+            left: 490px;
+            height: 450px;
+            width: 20px;
+            border: 2px solid white;
+            border-top: #070722;
+            border-right: #070722;
+            border-bottom: #070722;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">Saikat's Portfolio</div>
+            <div class="right">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="sec1">
+            <div class="divleft">
+                Hi, My name is, <span style="font-weight: bold;"><br>Saikat Pramanick,</span>
+                <div>and I am a <br><span id="spn">AI & ML Engineer</span></div>
+            </div>
+            <div class="divright">
+                <img src="H:\productivit\Projects\image folder\Adobe Express - file.png" alt="Saikat Pramanick">
+            </div>
+        </section>
+        <hr style="margin: 40px 60px; background: #c7bcdf; border: 0; height: 0.6px;">
+        <section class="secondSection">
+            <h1>Who I Am</h1>
+            <div class="experience-columns">
+                <div class="experience-column">
+                    <div class="cards">
+                        <h3>Driven Student</h3>
+                        <p>I'm 16 years old, studying in Class X in India. I’m not waiting to grow up — I’m building my
+                            future now!</p>
+                    </div>
+                    <div class="cards">
+                        <h3>Future AGI Engineer</h3>
+                        <p>I dream of creating AGI that can feel, think, and evolve — more like a best friend than a
+                            tool.</p>
+                    </div>
+                    <div class="cards">
+                        <h3>Hands-On Creator</h3>
+                        <p>I’ve built games, websites, and worked with FreeCAD, Blender, OpenCV, and Gazebo. I explore
+                            deeply and build creatively.</p>
+                    </div>
+                </div>
+                <div class="experience-column">
+                    <div class="cards">
+                        <h3>Learner & Doer</h3>
+                        <p>I’m learning Python, AI/ML frameworks like TensorFlow, Scikit-learn, and PyTorch, and
+                            exploring how to implement real-world tech.</p>
+                    </div>
+                    <div class="cards">
+                        <h3>Hardworking Dreamer</h3>
+                        <p>I run at dawn, practice cricket, and use platforms like Toloka and Clickworker to fund my
+                            goals — one step at a time.</p>
+                    </div>
+                    <div class="cards">
+                        <h3>Vision for Impact</h3>
+                        <p>My mission is to build something the world will remember — intelligent tech that blends logic
+                            with heart.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div class="out"></div>
+    <script>
+
+        const words = ["AI & ML Engineer...", "AGI Engineer...", "Web Developer...", "Robotics Enthusiast..."];
+        const spn = document.getElementById("spn");
+        let wordIndex = 0;
+        let letterIndex = 0;
+        let isDeleting = false;
+
+        function animateText() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+
+                spn.textContent = currentWord.substring(0, letterIndex - 1);
+                letterIndex--;
+                if (letterIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    setTimeout(animateText, 700);
+                } else {
+                    setTimeout(animateText, 120);
+                }
+            } else {
+
+                spn.textContent = currentWord.substring(0, letterIndex + 1);
+                letterIndex++;
+                if (letterIndex === currentWord.length) {
+                    isDeleting = true;
+                    setTimeout(animateText, 1200);
+                } else {
+                    setTimeout(animateText, 90);
+                }
+            }
+        }
+
+        animateText();
+    </script>
+</body>
+
+</html>
