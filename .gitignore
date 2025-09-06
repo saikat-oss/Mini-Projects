@@ -1,0 +1,19 @@
+# Ignore macOS system files
+.DS_Store
+
+# Ignore node_modules if using npm for any project
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore build output directories (if any)
+dist/
+build/
+
+# Ignore environment files
+.env
+
+# Ignore temporary files
+*.tmp
+*.swp
